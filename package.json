@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0",
+  "name": "svg-maker",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "babel-node src/index.js",
+    "test": "mocha --compilers js:babel-register",
+    "lint": "eslint .",
+    "build": "babel src -d lib",
+    "prepublish": "npm run build"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-register": "^6.9.0",
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  },
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "node-dir": "^0.1.16"
+  },
+  "license": "ISC",
+  "directories": {
+    "test": "test"
+  },
+  "bin": {
+    "svg-maker": "lib/index.js"
+  }
+}
