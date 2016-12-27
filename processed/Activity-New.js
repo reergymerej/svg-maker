@@ -1,4 +1,4 @@
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+<svg viewbox="0 0 32 32">
 
 <path class="st0" d="M14.5,21.7c0.5,0.1,1,0.1,1.5,0.1c5.5,0,10-3.5,10-7.7s-4.5-7.7-10-7.7S6,9.8,6,14c0,3,2.3,5.6,5.5,6.9
 	l-2.7,5.7"/>

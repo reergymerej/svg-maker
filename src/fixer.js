@@ -14,6 +14,7 @@ const removeComments = ($) => {
 }
 
 const removeXmlAndComments = ($) => {
+  console.log('removing xml junk...')
   $.root().contents().filter(function () {
     return this.type !== 'tag'
   }).remove()
@@ -21,15 +22,35 @@ const removeXmlAndComments = ($) => {
 }
 
 const removeStyles = ($) => {
-  $('style').remove()
+  const styles = $('style')
+  if (styles.length) {
+    console.log('Whoops!  Removing styles...')
+    styles.remove()
+  }
   return $
 }
 
-
+const removeSillyTags = ($) => {
+  console.log('removing those silly attributes...')
+  const svg = $('svg')
+  const attr = Object.keys(svg.attr()).map(attr => {
+    if (attr !== 'viewbox') {
+      svg.removeAttr(attr)
+    }
+  })
+  return $
+}
 
 const removeCrap = ($) => {
   $ = removeXmlAndComments($)
   $ = removeStyles($)
+  $ = removeSillyTags($)
+  return $
+}
+
+const reactify = ($) => {
+  // class => className
+  // etc.
   return $
 }
 
@@ -45,6 +66,8 @@ const fixThisSucker = (junk) => {
   // remove all the crap we don't want
 
   const cleaned = removeCrap($)
+
+  const reactified = reactify(cleaned)
 
   // stringify
   return stringify($)
