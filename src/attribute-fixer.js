@@ -250,7 +250,7 @@ const getJoinedAndCased = (attr, delimiter) => {
 }
 
 const replaceAttr = ($node, existingAttr, newAttr) => {
-  console.log(`${existingAttr} -> ${newAttr}`)
+  // console.log(`${existingAttr} -> ${newAttr}`)
   $node.attr(newAttr, $node.attr(existingAttr))
   $node.removeAttr(existingAttr)
 }
@@ -276,7 +276,7 @@ const commonReplacements = ($node, attr) => {
 }
 
 const killAttr = ($node, attr) => {
-  console.log(`adios "${attr}"`)
+  // console.log(`adios "${attr}"`)
   $node.removeAttr(attr)
 }
 

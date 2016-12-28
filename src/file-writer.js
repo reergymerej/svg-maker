@@ -18,7 +18,7 @@ const write = (outputDir, svg, name) => {
 export default const ${friendlyName} = (props) =>
   ${svgWithSpreadProps}
 `
-  console.log(`writing ${name} to ${friendlyName}`)
+  console.log(`${name}.svg -> ${friendlyName}.js`)
   // TODO: make sure we are not overwriting
   fs.writeFileSync(filePath, template)
 }

@@ -23,7 +23,7 @@ if (!fs.existsSync(outputDir)) {
 
 const inputFiles = dir.readFiles(inputDir, readOptions,
   (err, file, fileName, next) => {
-    console.log(`\nprocessing ${fileName}...`)
+    // console.log(`\nprocessing ${fileName}...`)
     const basename = path.basename(fileName, '.svg')
     const cleanedSvg = fixThisSucker(file)
     write(outputDir , cleanedSvg, basename)

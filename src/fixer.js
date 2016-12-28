@@ -3,7 +3,7 @@ import {fixAttribute} from './attribute-fixer'
 
 
 const removeXmlAndComments = ($) => {
-  console.log('removing xml junk...')
+  // console.log('removing xml junk...')
   $.root().contents().filter(function () {
     return this.type !== 'tag'
   }).remove()
@@ -13,7 +13,7 @@ const removeXmlAndComments = ($) => {
 const removeStyles = ($) => {
   const styles = $('style')
   if (styles.length) {
-    console.log('Whoops!  Removing styles...  Make sure you add them with CSS.')
+    // console.log('Whoops!  Removing styles...  Make sure you add them with CSS.')
     styles.remove()
   }
   return $
@@ -23,7 +23,7 @@ const eachAttribute = ($node, fn) => {
 }
 
 const removeSillyTags = ($) => {
-  console.log('removing those silly attributes...')
+  // console.log('removing those silly attributes...')
   const svg = $('svg')
   eachAttribute(svg, (attr) => {
     if (attr !== 'viewbox') {
@@ -41,7 +41,7 @@ const removeCrap = ($) => {
 }
 
 const reactify = ($) => {
-  console.log('converting attributes to React-friendly versions...')
+  // console.log('converting attributes to React-friendly versions...')
   const allNodes = $('*')
   allNodes.each(function () {
     const $this = $(this)
