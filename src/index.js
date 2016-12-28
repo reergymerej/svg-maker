@@ -10,7 +10,7 @@ import fs from 'fs'
 import path from 'path'
 import fixThisSucker from './fixer'
 
-const inputDir = process.cwd()
+const inputDir = path.join(process.cwd(), 'SVGs')
 const readOptions = {
   match: /.svg$/,
 }
@@ -22,6 +22,7 @@ if (!fs.existsSync(outputDir)) {
 
 const inputFiles = dir.readFiles(inputDir, readOptions,
   (err, file, fileName, next) => {
+    console.log(`\nprocessing ${fileName}...`)
     const basename = path.basename(fileName, '.svg') + '.js'
     const rewritten = fixThisSucker(file)
     const newFilePath = outputDir + '/' + basename
