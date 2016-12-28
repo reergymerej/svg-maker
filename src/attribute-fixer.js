@@ -237,14 +237,43 @@ const SUPPORTED = [
   'z',
   'zoomAndPan',
 ]
+
+const getJoinedAndCased = (attr) => {
+  const parts = attr.split('-')
+  return parts.map((part, index) => {
+    if (index > 0) {
+      return part[0].toUpperCase() + part.slice(1)
+    } else {
+      return part
+    }
+  }).join('')
+}
+
+const replaceAttr = ($node, existingAttr, newAttr) => {
+  console.log(`${existingAttr} -> ${newAttr}`)
+  $node.attr(newAttr, $node.attr(existingAttr))
+  $node.removeAttr(existingAttr)
+}
+
 export const fixAttribute = ($node, attr) => {
   if (attr === 'class') {
-    $node.attr('className', $node.attr(attr))
-    $node.removeAttr('class')
+    replaceAttr($node, 'class', 'className')
   } else {
     const index = SUPPORTED.indexOf(attr)
     if (index === -1) {
-      console.log(`${attr} won't work.`)
+      if ((/^data-/).test(attr)) {
+        // kill data attributes
+        console.log('adios data- attribute')
+        $node.removeAttr(attr)
+      } else {
+        const joinedAndCased = getJoinedAndCased(attr)
+        const index = SUPPORTED.indexOf(joinedAndCased)
+        if (index !== -1) {
+          replaceAttr($node, attr, joinedAndCased)
+        } else {
+          console.log(`hmmm.... ${attr}`)
+        }
+      }
     }
   }
 }
