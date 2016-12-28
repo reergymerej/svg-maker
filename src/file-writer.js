@@ -13,10 +13,13 @@ const write = (outputDir, svg, name) => {
   const filePath = `${outputDir}/${friendlyName}.js`
   const svgWithSpreadProps = spreadProps(svg)
   const template =
-`import React from 'react'
+`/* eslint-disable */
+import React from 'react'
 
-export default const ${friendlyName} = (props) =>
+const ${friendlyName} = (props) =>
   ${svgWithSpreadProps}
+
+export default ${friendlyName}
 `
   console.log(`${name}.svg -> ${friendlyName}.js`)
   if (fs.existsSync(filePath)) {
