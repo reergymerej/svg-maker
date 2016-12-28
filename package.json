@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "svg-maker",
   "main": "lib/index.js",
   "scripts": {
@@ -28,6 +28,16 @@
     "svg-maker": "lib/index.js"
   },
   "description": "Generate decent React SVG components given crappy SVGs",
+  "keywords": [
+    "svg",
+    "svg component",
+    "react",
+    "react svg",
+    "svg generator",
+    "svg converter",
+    "react svg icon",
+    "icon"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/reergymerej/svg-maker.git"
