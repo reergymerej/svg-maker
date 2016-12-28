@@ -5,6 +5,9 @@ React app?  :(
 
 This will help you get started.
 
+*Disclaimer: This is basically an experiment.  If it is of any use, I will build on this and
+make it better.  Use at your own risk.*
+
 ## install
 
 `npm i -g svg-maker`
