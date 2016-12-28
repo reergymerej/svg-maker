@@ -4,6 +4,11 @@ import {fixAttribute} from './attribute-fixer'
 
 const removeXmlAndComments = ($) => {
   // console.log('removing xml junk...')
+  // Really sloppy way to get all nodes.
+  $('*').contents().filter(function () {
+    return this.type !== 'tag'
+  }).remove()
+  // Remove the outer xml attribute if present
   $.root().contents().filter(function () {
     return this.type !== 'tag'
   }).remove()

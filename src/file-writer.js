@@ -19,8 +19,12 @@ export default const ${friendlyName} = (props) =>
   ${svgWithSpreadProps}
 `
   console.log(`${name}.svg -> ${friendlyName}.js`)
-  // TODO: make sure we are not overwriting
-  fs.writeFileSync(filePath, template)
+  if (fs.existsSync(filePath)) {
+    // We generated a non-unique name.  :(
+    throw new Error('That dog won\'t hunt.')
+  } else {
+    fs.writeFileSync(filePath, template)
+  }
 }
 
 export default write

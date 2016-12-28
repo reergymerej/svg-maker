@@ -4,7 +4,7 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "babel-node src/index.js",
-    "test": "mocha --compilers js:babel-register",
+    "test": "echo \"You wish.\"",
     "lint": "eslint .",
     "build": "babel src -d lib",
     "prepublish": "npm run build"
@@ -20,11 +20,21 @@
     "cheerio": "^0.22.0",
     "node-dir": "^0.1.16"
   },
+  "preferGlobal": true,
   "license": "ISC",
   "directories": {
-    "test": "test"
   },
   "bin": {
     "svg-maker": "lib/index.js"
-  }
+  },
+  "description": "Generate decent React SVG components given crappy SVGs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reergymerej/svg-maker.git"
+  },
+  "author": "Jeremy Greer <jeremy.greer.atl@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/reergymerej/svg-maker/issues"
+  },
+  "homepage": "https://github.com/reergymerej/svg-maker#readme"
 }

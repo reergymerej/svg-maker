@@ -11,12 +11,12 @@ import path from 'path'
 import fixThisSucker from './fixer'
 import write from './file-writer'
 
-const inputDir = path.join(process.cwd(), 'SVGs')
+const inputDir = process.cwd()
 const readOptions = {
   match: /.svg$/,
 }
 
-const outputDir = `${inputDir}/processed`
+const outputDir = `${inputDir}/svg-components`
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir)
 }
