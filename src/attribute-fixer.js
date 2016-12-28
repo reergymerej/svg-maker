@@ -238,8 +238,8 @@ const SUPPORTED = [
   'zoomAndPan',
 ]
 
-const getJoinedAndCased = (attr) => {
-  const parts = attr.split('-')
+const getJoinedAndCased = (attr, delimiter) => {
+  const parts = attr.split(delimiter)
   return parts.map((part, index) => {
     if (index > 0) {
       return part[0].toUpperCase() + part.slice(1)
@@ -255,6 +255,31 @@ const replaceAttr = ($node, existingAttr, newAttr) => {
   $node.removeAttr(existingAttr)
 }
 
+const splitOn = ($node, attr, delimiter) => {
+  const joinedAndCased = getJoinedAndCased(attr, delimiter)
+  const index = SUPPORTED.indexOf(joinedAndCased)
+  const found = index !== -1
+  if (found) {
+    replaceAttr($node, attr, joinedAndCased)
+  }
+  return found
+}
+
+const commonReplacements = ($node, attr) => {
+  switch (attr) {
+    case 'viewbox':
+      replaceAttr($node, attr, 'viewBox')
+      return true
+    default:
+      return false
+  }
+}
+
+const killAttr = ($node, attr) => {
+  console.log(`adios "${attr}"`)
+  $node.removeAttr(attr)
+}
+
 export const fixAttribute = ($node, attr) => {
   if (attr === 'class') {
     replaceAttr($node, 'class', 'className')
@@ -262,16 +287,14 @@ export const fixAttribute = ($node, attr) => {
     const index = SUPPORTED.indexOf(attr)
     if (index === -1) {
       if ((/^data-/).test(attr)) {
-        // kill data attributes
-        console.log('adios data- attribute')
-        $node.removeAttr(attr)
+        killAttr($node, attr)
       } else {
-        const joinedAndCased = getJoinedAndCased(attr)
-        const index = SUPPORTED.indexOf(joinedAndCased)
-        if (index !== -1) {
-          replaceAttr($node, attr, joinedAndCased)
-        } else {
-          console.log(`hmmm.... ${attr}`)
+        if (!splitOn($node, attr, '-')) {
+          if (!splitOn($node, attr, ':')) {
+            if (!commonReplacements($node, attr)) {
+              killAttr($node, attr)
+            }
+          }
         }
       }
     }
